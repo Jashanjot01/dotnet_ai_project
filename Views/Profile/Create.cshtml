@@ -1,0 +1,68 @@
+@{
+    ViewData["Title"] = "Create Profile";
+}
+
+@model dotnet_ai_project.Models.FileUpload
+
+<h2>@ViewBag.Title</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="ProfilePic"></label>
+        <input asp-for="ProfilePic" type="file" name="ProfilePic" id="txtFile" class="form-control" accept="image/*">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Profile.Username"></label>
+        <input asp-for="Profile.Username" class="form-control" id="name">
+        <span asp-validation-for="Profile.Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Profile.UserBio">About yourself</label>
+        <textarea asp-for="Profile.UserBio" class="form-control" name="Profile.UserBio" id="desc"></textarea>
+    </div>
+    <!-- ... (unchanged code) ... -->
+    <button id="submit" class="btn btn-dark p-2 m-3">Create Profile</button>
+</form>
+
+<script>
+    $(document).ready(function () {
+        // (optional: add any initialization logic here)
+    });
+
+    $("#submit").click(function () {
+        var file = $("#txtFile").val();
+        if (file === "") {
+            alert("Please upload a profile picture");
+            return false;
+        }
+
+        var files = $("#txtFile").prop("files");
+        var formData = new FormData();
+
+        for (var i = 0; i < files.length; i++) {
+            formData.append("ProfilePic", files[i]);
+        }
+
+        var profile = {
+            Username: $("#name").val(),
+            UserBio: $("#desc").val()
+        };
+
+        formData.append("Profile", JSON.stringify(profile));
+
+        $.ajax({
+            type: "POST",
+            url: "/Profile/Create",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                alert("Profile created successfully");
+            },
+            error: function (error) {
+                alert("Error occurred while creating profile");
+            }
+        });
+    });
+</script>

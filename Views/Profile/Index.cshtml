@@ -1,0 +1,103 @@
+@{
+    ViewBag.Title = "Profile";
+}
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="~/css/profile_home.css" asp-append-version="true" />
+<div class="container bootstrap snippets bootdeys">
+    <div class="row" id="user-profile">
+        <div class="col-lg-3 col-md-4 col-sm-4">
+            <div class="main-box clearfix">
+                <h2>@ViewBag.profile.Username</h2>
+                <div class="profile-status">
+                    <i class="fa fa-check-circle"></i> Active User
+                </div>
+                <img src=@ViewBag.image alt="" class="profile-img img-fluid center-block">
+
+                <div class="profile-since">
+                    Member since: @ViewBag.profile.Joined.ToString("dd MMM, yyyy")
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9 col-md-8 col-sm-8">
+            <div class="main-box clearfix">
+                <div class="profile-header">
+                    <h3><span>User info</span></h3>
+                    <a asp-controller="Profile" asp-action="Edit" class="btn btn-dark edit-profile">
+                        <i class="fa fa-pencil-square fa-lg"></i> Edit profile
+                    </a>
+                </div>
+
+                <div class="row profile-user-info">
+                    <div class="col-sm-8">
+                        <div class="profile-user-details clearfix">
+                            <div class="profile-user-details-label">
+                                Username
+                            </div>
+                            <div class="profile-user-details-value">
+                                @ViewBag.profile.Username
+                            </div>
+                        </div>
+                        <div class="profile-user-details clearfix">
+                            <div class="profile-user-details-label">
+                                Description
+                            </div>
+                            <div class="profile-user-details-value">
+                                @ViewBag.profile.UserBio
+                            </div>
+                        </div>
+                        <div class="profile-user-details clearfix">
+                            <div class="profile-user-details-label">
+                                Email
+                            </div>
+                            <div class="profile-user-details-value">
+                                @ViewBag.profile.Email
+                            </div>
+                        </div>
+                        <div class="profile-user-details clearfix">
+                            <div class="profile-user-details-label">
+                                Joined
+                            </div>
+                            <div class="profile-user-details-value">
+                                @ViewBag.profile.Joined.ToString("dd MMM, yyyy")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </hr>
+
+                <div class="tabs-wrapper profile-tabs">
+                    <div class="container profile-page">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-7 col-md-12">
+                                <div class="card profile-header">
+                                    <div class="body">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 col-12">
+                                                <div class="profile-image float-md-right"> <img
+                                                        src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                        class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-8 col-md-8 col-12">
+                                                <h4 class="m-t-0 m-b-0"><strong>Michael</strong> Deo</h4>
+                                                <span class="job_post">Ui UX Designer</span>
+                                                <p>795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
+                                                <div>
+                                                    <button class="btn btn-dark btn-round">Make friend</button>
+                                                    <button class="btn btn-dark btn-round btn-simple">Message</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
