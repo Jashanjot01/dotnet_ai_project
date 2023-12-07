@@ -13,7 +13,7 @@
             {
                 var profile = ViewBag.Profiles[i];
 
-                <div class="card text-center" id="main-card" data-user-id="@i" data-user-name="@profile.Username"
+                <div class="card text-center m-3" id="main-card" data-user-id="@i" data-user-name="@profile.Username"
                     data-user-bio="@profile.UserBio" data-user-img="@Convert.ToBase64String(profile.ProfilePic)"
                     data-user-email="@profile.Email" style="width: 9rem; border:none;">
                     @if (profile.ProfilePic != null && profile.ProfilePic.Length > 0)
@@ -222,7 +222,7 @@
     }
     async function OpenaiFetchAPI(msg, filter) {
         var url = "https://api.openai.com/v1/chat/completions";
-        var bearer = 'Bearer ' + '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'
+        var bearer = 'Bearer ' + ''
         let res = await fetch(url, {
             method: 'POST',
             headers: {
