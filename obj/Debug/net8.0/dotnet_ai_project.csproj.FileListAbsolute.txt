@@ -255,3 +255,5 @@
 /Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Drawing.Common.dll
 /Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Security.Cryptography.ProtectedData.dll
 /Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Windows.Extensions.dll
+/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/bin/Debug/net8.0/libman.json
+/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/obj/Debug/net8.0/dotnet_ai_project.sourcelink.json

@@ -12,12 +12,14 @@ public class ApplicationDbContext : IdentityDbContext
     }
 
     public DbSet<ProfileModel> Profiles { get; set; } = default!;
+    public DbSet<ChatModel> Chats { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
 
         builder.Entity<ProfileModel>().ToTable("Profiles");
+        builder.Entity<ChatModel>().ToTable("Chat");
 
     }
 }

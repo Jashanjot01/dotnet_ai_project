@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets/dotnet_ai_project.bundle.scp.css"
     },
     {
+      "Id": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/css/chat_page.css",
+      "PackagePath": "staticwebassets/css/chat_page.css"
+    },
+    {
       "Id": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/css/profile_home.css",
       "PackagePath": "staticwebassets/css/profile_home.css"
     },
@@ -15,6 +19,10 @@
     {
       "Id": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/favicon.ico",
       "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/js/chat.js",
+      "PackagePath": "staticwebassets/js/chat.js"
     },
     {
       "Id": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/js/site.js",
@@ -247,6 +255,14 @@
     {
       "Id": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/lib/jquery/dist/jquery.min.map",
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
+    },
+    {
+      "Id": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/lib/signalr/dist/browser/signalr.js",
+      "PackagePath": "staticwebassets/lib/signalr/dist/browser/signalr.js"
+    },
+    {
+      "Id": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/lib/signalr/dist/browser/signalr.min.js",
+      "PackagePath": "staticwebassets/lib/signalr/dist/browser/signalr.min.js"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.dotnet_ai_project.props",

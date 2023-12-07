@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "He49HegWvSNA/D8bGbt8+bxDGh+VsX/iFbtAn+UuFyA=",
+  "Hash": "Xuu313fFgAhjNotjQdHw4fDSz4x3hTXXoG+XdLSbwuI=",
   "Source": "dotnet_ai_project",
   "BasePath": "_content/dotnet_ai_project",
   "Mode": "Default",
@@ -1195,6 +1195,25 @@
       "OriginalItemSpec": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/obj/Debug/net8.0/scopedcss/projectbundle/dotnet_ai_project.bundle.scp.css"
     },
     {
+      "Identity": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/css/chat_page.css",
+      "SourceId": "dotnet_ai_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/",
+      "BasePath": "_content/dotnet_ai_project",
+      "RelativePath": "css/chat_page.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/chat_page.css"
+    },
+    {
       "Identity": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/css/profile_home.css",
       "SourceId": "dotnet_ai_project",
       "SourceType": "Discovered",
@@ -1250,6 +1269,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/js/chat.js",
+      "SourceId": "dotnet_ai_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/",
+      "BasePath": "_content/dotnet_ai_project",
+      "RelativePath": "js/chat.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/chat.js"
     },
     {
       "Identity": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/js/site.js",
@@ -2352,6 +2390,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/lib/signalr/dist/browser/signalr.js",
+      "SourceId": "dotnet_ai_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/",
+      "BasePath": "_content/dotnet_ai_project",
+      "RelativePath": "lib/signalr/dist/browser/signalr.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/lib/signalr/dist/browser/signalr.js"
+    },
+    {
+      "Identity": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/lib/signalr/dist/browser/signalr.min.js",
+      "SourceId": "dotnet_ai_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/",
+      "BasePath": "_content/dotnet_ai_project",
+      "RelativePath": "lib/signalr/dist/browser/signalr.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/lib/signalr/dist/browser/signalr.min.js"
     }
   ]
 }

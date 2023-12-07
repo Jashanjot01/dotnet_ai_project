@@ -1,3 +1,425 @@
-<div>
-    Let's chat
+@using System.Text.Json
+
+@{
+    ViewBag.currImg = Convert.ToBase64String(ViewBag.me.ProfilePic);
+}
+
+<link rel="stylesheet" href="~/css/chat_page.css" />
+<!-- Top Part -->
+<div class="d-flex flex-column ">
+    <div id="top-part" style="height: 5%; margin: 0">
+        <div class="d-flex flex-row" id="card-holder">
+            @for (int i = 0; i < ViewBag.Profiles.Count; i++)
+            {
+                var profile = ViewBag.Profiles[i];
+
+                <div class="card text-center" id="main-card" data-user-id="@i" data-user-name="@profile.Username"
+                    data-user-bio="@profile.UserBio" data-user-img="@Convert.ToBase64String(profile.ProfilePic)"
+                    data-user-email="@profile.Email" style="width: 9rem; border:none;">
+                    @if (profile.ProfilePic != null && profile.ProfilePic.Length > 0)
+                    {
+                        var base64Image = Convert.ToBase64String(profile.ProfilePic);
+                        <img src="data:image/png;base64, @base64Image" class="card-img-top img-fluid" alt="User Image"
+                            style="border-radius: 50%;">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@profile.Username</h5>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <hr />
+    <!-- Main Container (Filter and Chat) -->
+    <div id="filter-chat-container" class="row flex-grow-1" style="height: 60vh;">
+        <button class="btn btn-dark d-md-none" data-toggle="collapse" data-target="#filter-container"
+            style="max-height: fit-content;">Toggle
+            Filters</button>
+        <!-- Filter Container (Toggleable on smaller screens) -->
+        <div id="filter-container" class="col-md-3 p-2 collapse show my-3">
+            <div id="selected-profile" class="d-flex flex-column justify-content-center text-center"></div>
+            <div class="container mt-4">
+
+                <!-- Filter Container for Vulgar Content -->
+                <div class="card  my-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Content filters</strong></h5>
+                        <div class="checkboxes">
+                            <!-- Generate checkboxes for vulgar content -->
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="vulgar1" value="vulgar"
+                                    name="filter">
+                                <label class="custom-control-label" for="vulgar1">Vulgarity</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="vulgar2" value="sarcastic"
+                                    name="filter">
+                                <label class="custom-control-label" for="vulgar2">Induce sarcasm</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="vulgar2" value="melancholy"
+                                    name="filter">
+                                <label class="custom-control-label" for="vulgar2">Melancholy</label>
+                            </div>
+                            <!-- Add more checkboxes as needed -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Container for Languages -->
+                <div class="card  my-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Language filters</strong></h5>
+                        <div class="checkboxes">
+                            <!-- Generate checkboxes for languages -->
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="french" value="french"
+                                    name="filter">
+                                <label class="custom-control-label" for="french">French</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="chinese" value="chinese"
+                                    name="filter">
+                                <label class="custom-control-label" for="chinese">Chinese</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="german" value="german"
+                                    name="filter">
+                                <label class="custom-control-label" for="german">German</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="spanish" value="spanish"
+                                    name="filter">
+                                <label class="custom-control-label" for="spanish">Spanish</label>
+                            </div>
+                            <!-- Add more checkboxes as needed -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Container for Avatars -->
+                <div class="card  my-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Avatars</strong></h5>
+                        <div class="checkboxes">
+                            <!-- Generate checkboxes for avatars -->
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="trump" value="Donald Trump"
+                                    name="filter">
+                                <label class="custom-control-label" for="trump">Donald Trump</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="trump" value="William Shakespeare"
+                                    name="filter">
+                                <label class="custom-control-label" for="trump">William Shakespeare</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="trump" value="Joe Biden"
+                                    name="filter">
+                                <label class="custom-control-label" for="trump">Joe Biden</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="trump" value="The Joker"
+                                    name="filter">
+                                <label class="custom-control-label" for="trump">Joker</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Chat Container -->
+        <div id="chat-container" class="col-md-9">
+            <div class="chat-container">
+                <ul class="chat-box chatContainerScroll" id="chat_holder">
+                    <!-- Chat messages will be added here -->
+                </ul>
+                <div class="form-group  p-2 my-4 d-flex">
+                    <textarea class="form-control" id="msg" rows="1" placeholder="Type your message here..."></textarea>
+                    <button type="button" id="sendButton" class="btn btn-dark">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
+<script>
+    // Handle the filter event
+    async function ApplyFilter(msg) {
+        // Get all radio buttons with the name "filter"
+        var radioButtons = document.getElementsByName('filter');
+
+        // Variable to store the selected value
+        var selectedValue = null;
+
+        // Iterate through the radio buttons to find the selected one
+        for (var i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].checked) {
+                selectedValue = radioButtons[i].value;
+                break;  // Once we find the selected one, break out of the loop
+            }
+        }
+
+        let filter = ""
+        let key = ""
+        if (selectedValue == null) {
+            return msg
+        }
+
+        if (selectedValue == "vulgar") {
+            filter = "Tell if the text is vulgar or not. Say yes or no. Value of json key should be is_vulgar."
+            key = "is_vulgar"
+        }
+        else if (selectedValue == "sarcastic") {
+            filter = "Sarcastify the text. Value of json key should be sarcastic_text."
+            key = "sarcastic_text"
+        }
+        else if (selectedValue == "french") {
+            filter = "Translate the text to french. Value of json key should be french_text."
+            key = "french_text"
+        }
+        else if (selectedValue == "chinese") {
+            filter = "Translate the text to chinese. Value of json key should be chinese_text."
+            key = "chinese_text"
+        }
+        else if (selectedValue == "german") {
+            filter = "Translate the text to german. Value of json key should be german_text."
+            key = "german_text"
+        }
+        else if (selectedValue == "spanish") {
+            filter = "Translate the text to spanish. Value of json key should be spanish_text."
+            key = "spanish_text"
+        }
+        else if (selectedValue == "Donald Trump") {
+            filter = "Make the text sound like Donald Trump. Value of json key should be trump_text."
+            key = "trump_text"
+        }
+        else if (selectedValue == "William Shakespeare") {
+            filter = "Make the text sound like William Shakespeare. Value of json key should be shakespeare_text."
+            key = "shakespeare_text"
+        }
+        else if (selectedValue == "Joe Biden") {
+            filter = "Make the text sound like Joe Biden. Value of json key should be biden_text."
+            key = "biden_text"
+        }
+        else if (selectedValue == "The Joker") {
+            filter = "Make the text sound like The Joker. Value of json key should be joker_text."
+            key = "joker_text"
+        } else if (selectedValue == "melancholy") {
+            filter = "Make the text sound melancholy. Value of json key should be melancholy_text."
+            key = "melancholy_text"
+        }
+
+
+        var res = await OpenaiFetchAPI(msg, filter)
+        res = JSON.parse(res)
+        return res[key]
+    }
+    async function OpenaiFetchAPI(msg, filter) {
+        var url = "https://api.openai.com/v1/chat/completions";
+        var bearer = 'Bearer ' + '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'
+        let res = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Authorization': bearer,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(
+                {
+                    "model": "gpt-4-1106-preview",
+                    "messages": [
+                        {
+                            "role": "system",
+                            "content": "You are a helpful assistant. Your job is to take text and filters from user and return the filtered text. Answer everything in json"
+                        },
+                        {
+                            "role": "user",
+                            "content": `text is ${msg} and filter is ${filter} `
+                        }
+                    ],
+                    "response_format": { "type": "json_object" }
+
+
+                }
+            )
+
+        })
+        res = await res.json();
+        return res['choices'][0].message.content
+
+    }
+    $(document).ready(function () {
+        // Handle card click event
+    });
+    var selectedUser = null;
+    var currUser = '@User.Identity.Name'
+    var statuses = {}
+
+    $("#main-card").click(function () {
+        var profile = {
+            UserId: $(this).data("user-id"),
+            Username: $(this).data("user-name"),
+            UserBio: $(this).data("user-bio"),
+            ProfilePic: $(this).data("user-img"),
+            UserEmail: $(this).data("user-email"),
+            Status: "offline"
+        };
+        selectedUser = profile;
+        if (statuses[profile.UserEmail] != null) {
+            profile.Status = statuses[profile.UserEmail]
+        }
+
+        // Update the filter side with the selected profile details
+        updateFilterSide(profile);
+    });
+
+    // Update the filter side with the selected profile details
+    function updateFilterSide(userProfileDetails) {
+        // Update the content inside the filter side
+        $("#selected-profile").html(`
+            <div class="text-center">
+        <img src="data:image/png;base64, ${userProfileDetails.ProfilePic}" class="img-fluid" alt="User Image" style="border-radius: 50%; width: 5rem; height: 5rem; margin: auto;">
+        <p class="m-1 p-2"><strong>username:</strong> ${userProfileDetails.Username}</p>
+        <p class="m-1 p-2"><strong>about him:</strong> ${userProfileDetails.UserBio}</p>
+        <p class="m-1 p-2"><strong>status:</strong> ${userProfileDetails.Status}</p>
+    </div>
+        `);
+    }
+
+    var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+    //Disable send button until connection is established
+    document.getElementById("sendButton").disabled = true;
+    connection.on("ReceiveMessage", async function (user, message, receiver) {
+        if(msg == "I am online" && receiver == "nouser"){
+            console.log("here")
+            statuses[user] = "online"
+        }
+        
+        var msg = message
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+        msg = await ApplyFilter(msg);
+        if (msg == "yes" || msg == "Yes") {
+            msg = "This comment has been blocked because it contains vulgar content"
+        }
+        if (receiver == currUser && user == selectedUser.UserEmail) {
+            // Create the list item
+            var li = document.createElement("li");
+            li.className = "chat-left"; // Set the class name
+
+            // Create the chat-avatar div
+            var chatAvatarDiv = document.createElement("div");
+            chatAvatarDiv.className = "chat-avatar";
+
+            // Create the chat-avatar image
+            var avatarImage = document.createElement("img");
+            avatarImage.src = `data:image/png;base64, ${selectedUser.ProfilePic}`;
+
+            // Create the chat-name div
+            var chatNameDiv = document.createElement("div");
+            chatNameDiv.className = "chat-name";
+            chatNameDiv.textContent = selectedUser.Username;
+
+            // Append the image and name div to the chat-avatar div
+            chatAvatarDiv.appendChild(avatarImage);
+            chatAvatarDiv.appendChild(chatNameDiv);
+
+            // Create the chat-text div
+            var chatTextDiv = document.createElement("div");
+            chatTextDiv.className = "chat-text";
+            chatTextDiv.innerHTML = msg;
+
+            // Create the chat-hour div
+            var chatHourDiv = document.createElement("div");
+            chatHourDiv.className = "chat-hour";
+            chatHourDiv.innerHTML = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }); + "<span class='fa fa-check-circle'></span>";
+
+            // Append the chat-avatar, chat-text, and chat-hour divs to the list item
+            li.appendChild(chatAvatarDiv);
+            li.appendChild(chatTextDiv);
+            li.appendChild(chatHourDiv);
+
+
+            document.getElementById("chat_holder").appendChild(li);
+        }
+    });
+    connection
+        .start()
+        .then(function () {
+            connection.invoke("SendMessage", currUser, "I am online", "nouser").catch(function (err) {
+                return console.error(err.toString());
+            });
+            document.getElementById("sendButton").disabled = false;
+        })
+        .catch(function (err) {
+            return console.error(err.toString());
+        });
+    document
+        .getElementById("sendButton")
+        .addEventListener("click", function (event) {
+            var message = document.getElementById("msg").value;
+            if (selectedUser == null) {
+                alert("Please select a user to chat with");
+                return;
+            }
+            if (message == "") {
+                return;
+            }
+            var msg = message
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+            connection.invoke("SendMessage", currUser, msg, selectedUser.UserEmail).catch(function (err) {
+                return console.error(err.toString());
+            });
+            document.getElementById("msg").value = "";
+            // Create the list item
+            var liRight = document.createElement("li");
+            liRight.className = "chat-right"; // Set the class name
+
+            // Create the chat-hour div
+            var chatHourDivRight = document.createElement("div");
+            chatHourDivRight.className = "chat-hour";
+            chatHourDivRight.innerHTML = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }); + "<span class='fa fa-check-circle'></span>";
+
+            // Create the chat-text div
+            var chatTextDivRight = document.createElement("div");
+            chatTextDivRight.className = "chat-text";
+            chatTextDivRight.innerHTML = msg;
+
+            // Create the chat-avatar div
+            var chatAvatarDivRight = document.createElement("div");
+            chatAvatarDivRight.className = "chat-avatar";
+
+            // Create the chat-avatar image
+            var avatarImageRight = document.createElement("img");
+            avatarImageRight.src = 'data:image/png;base64,' + '@ViewBag.currImg';
+
+            // Create the chat-name div
+            var chatNameDivRight = document.createElement("div");
+            chatNameDivRight.className = "chat-name";
+            chatNameDivRight.textContent = '@ViewBag.me.Username';
+
+            // Append the image and name div to the chat-avatar div
+            chatAvatarDivRight.appendChild(avatarImageRight);
+            chatAvatarDivRight.appendChild(chatNameDivRight);
+
+            // Append the chat-hour, chat-text, and chat-avatar divs to the list item
+            liRight.appendChild(chatHourDivRight);
+            liRight.appendChild(chatTextDivRight);
+            liRight.appendChild(chatAvatarDivRight);
+            document.getElementById("chat_holder").appendChild(liRight);
+            event.preventDefault();
+        });
+
+
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
