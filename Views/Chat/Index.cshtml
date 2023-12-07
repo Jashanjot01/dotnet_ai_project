@@ -13,14 +13,14 @@
             {
                 var profile = ViewBag.Profiles[i];
 
-                <div class="card text-center m-3" id="main-card" data-user-id="@i" data-user-name="@profile.Username"
+                <div class="card text-center m-3 main-card" id="main-card" data-user-id="@i" data-user-name="@profile.Username"
                     data-user-bio="@profile.UserBio" data-user-img="@Convert.ToBase64String(profile.ProfilePic)"
                     data-user-email="@profile.Email" style="width: 9rem; border:none;">
                     @if (profile.ProfilePic != null && profile.ProfilePic.Length > 0)
                     {
                         var base64Image = Convert.ToBase64String(profile.ProfilePic);
                         <img src="data:image/png;base64, @base64Image" class="card-img-top img-fluid" alt="User Image"
-                            style="border-radius: 50%;">
+                            style="border-radius: 50%; width:10rem; height:10rem">
                     }
                     <div class="card-body">
                         <h5 class="card-title">@profile.Username</h5>
@@ -34,7 +34,7 @@
     <!-- Main Container (Filter and Chat) -->
     <div id="filter-chat-container" class="row flex-grow-1" style="height: 60vh;">
         <button class="btn btn-dark d-md-none" data-toggle="collapse" data-target="#filter-container"
-            style="max-height: fit-content;">Toggle
+            style="max-height: fit-content;" style="max-height: 20px;">Toggle
             Filters</button>
         <!-- Filter Container (Toggleable on smaller screens) -->
         <div id="filter-container" class="col-md-3 p-2 collapse show my-3">
@@ -260,14 +260,14 @@
     var currUser = '@User.Identity.Name'
     var statuses = {}
 
-    $("#main-card").click(function () {
+    $(".main-card").click(function () {
         var profile = {
             UserId: $(this).data("user-id"),
             Username: $(this).data("user-name"),
             UserBio: $(this).data("user-bio"),
             ProfilePic: $(this).data("user-img"),
             UserEmail: $(this).data("user-email"),
-            Status: "offline"
+            Status: "online"
         };
         selectedUser = profile;
         if (statuses[profile.UserEmail] != null) {
