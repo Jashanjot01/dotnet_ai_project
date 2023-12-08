@@ -21,6 +21,26 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/images/image-3.png",
+      "PackagePath": "staticwebassets/images/image-3.png"
+    },
+    {
+      "Id": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/images/image-4.png",
+      "PackagePath": "staticwebassets/images/image-4.png"
+    },
+    {
+      "Id": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/images/image-5.png",
+      "PackagePath": "staticwebassets/images/image-5.png"
+    },
+    {
+      "Id": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/images/me.heic",
+      "PackagePath": "staticwebassets/images/me.heic"
+    },
+    {
+      "Id": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/images/me.webp",
+      "PackagePath": "staticwebassets/images/me.webp"
+    },
+    {
       "Id": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/wwwroot/js/chat.js",
       "PackagePath": "staticwebassets/js/chat.js"
     },

@@ -24,6 +24,11 @@ public class ChatController : Controller
         var email = User?.Identity?.Name;
         var profiles = _context.Profiles.Where(p => p.Email != email).ToList();
         var me = _context.Profiles.Where(p => p.Email == email).FirstOrDefault();
+
+        if (me == null)
+        {
+            return RedirectToAction("Index", "Home");
+        }
         ViewBag.profiles = profiles;
         ViewBag.images = new List<string>();
         ViewBag.me = me;
@@ -36,21 +41,21 @@ public class ChatController : Controller
         return View();
     }
 
-    [HttpPost]
-    public async Task<IActionResult> SaveMessage(string sender, string message, string receiver)
-    {
-        // save message to database
-        var chat = new ChatModel
-        {
-            Sender = sender,
-            Message = message,
-            Receiver = receiver,
-            Time = DateTime.Now
-        };
-        _context.Chats.Add(chat);
-        await _context.SaveChangesAsync();
-        return Ok();
-    }
+    // [HttpPost]
+    // public async Task<IActionResult> SaveMessage(string sender, string message, string receiver)
+    // {
+    //     // save message to database
+    //     var chat = new ChatModel
+    //     {
+    //         Sender = sender,
+    //         Message = message,
+    //         Receiver = receiver,
+    //         Time = DateTime.Now
+    //     };
+    //     _context.Chats.Add(chat);
+    //     await _context.SaveChangesAsync();
+    //     return Ok();
+    // }
 
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

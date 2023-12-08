@@ -9,6 +9,22 @@ namespace dotnet_ai_project.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Profiles",
+                columns: table => new
+                {
+                    Username = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Joined = table.Column<DateTime>(nullable: false),
+                    ProfilePic = table.Column<byte[]>(nullable: true),
+                    UserBio = table.Column<string>(nullable: true)
+                },
+                
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Profiles", x => x.Email);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
