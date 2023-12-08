@@ -1,25 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/dotnet_ai_project.csproj": {}
+    "/Users/jashanjot_singh/Desktop/BCIT/COMP 4976 - Microsoft/dotnet_ai_project/dotnet_ai_project.csproj": {}
   },
   "projects": {
-    "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/dotnet_ai_project.csproj": {
+    "/Users/jashanjot_singh/Desktop/BCIT/COMP 4976 - Microsoft/dotnet_ai_project/dotnet_ai_project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/dotnet_ai_project.csproj",
+        "projectUniqueName": "/Users/jashanjot_singh/Desktop/BCIT/COMP 4976 - Microsoft/dotnet_ai_project/dotnet_ai_project.csproj",
         "projectName": "dotnet_ai_project",
-        "projectPath": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/dotnet_ai_project.csproj",
-        "packagesPath": "/Users/pahulsidhu/.nuget/packages/",
-        "outputPath": "/Users/pahulsidhu/Documents/Development/Medhat_Dotnet/Project/dotnet_ai_project/obj/",
+        "projectPath": "/Users/jashanjot_singh/Desktop/BCIT/COMP 4976 - Microsoft/dotnet_ai_project/dotnet_ai_project.csproj",
+        "packagesPath": "/Users/jashanjot_singh/.nuget/packages/",
+        "outputPath": "/Users/jashanjot_singh/Desktop/BCIT/COMP 4976 - Microsoft/dotnet_ai_project/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/pahulsidhu/.nuget/NuGet/NuGet.Config"
+          "/Users/jashanjot_singh/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
